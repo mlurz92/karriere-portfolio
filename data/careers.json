@@ -1,0 +1,663 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "generated_at": "2025-08-16T12:00:00+02:00",
+    "currency": "EUR",
+    "locale": "de-DE",
+    "notes": [
+      "Alle Beträge brutto, sofern nicht anders angegeben.",
+      "Tarifdaten TV-Ärzte St. Georg: konsolidiert aus Stand 2022 (durchgeschrieben) zzgl. 5./6. Änderungstarifvertrag (2024/2025).",
+      "Markt- und Arbeitgeberdaten: verifiziert per offizieller Karriere-/Stellenportale (siehe sources)."
+    ]
+  },
+  "profile": {
+    "name": "Dr. med. Markus Lurz",
+    "title": "Facharzt für Radiologie | MRT-Spezialist | IT-/KI-Integration | Leitungsfunktion",
+    "location": "Leipzig, Deutschland",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": "",
+      "linkedin": ""
+    },
+    "summary": "Radiologe mit ausgewiesener Expertise in MRT (3.0 T Prisma fit, 1.5 T Altea), Protokollentwicklung/Optimierung, CT/Röntgen, teleradiologischer Notfallversorgung, Abteilungs-IT (Syngo.via) und KI-Integration. Leitungsnahe Aufgaben (Dienst-/Personalplanung), forschungsaktiv (MRT Rektumkarzinom), hohe System- und Workflow-Kompetenz.",
+    "education": [
+      {
+        "degree": "Staatsexamen Humanmedizin",
+        "institution": "FAU Erlangen–Nürnberg",
+        "years": "2011–2017"
+      },
+      {
+        "degree": "Dr. med. (summa cum laude), Promotionspreis 2020",
+        "institution": "Institut für Diagnostische und Interventionelle Radiologie, FAU",
+        "thesis": "Automatische Auswahl der Röhrenspannung bei thorakoabdomineller CT (Dual-Source, 3. Gen.) – Bildqualität und Dosis",
+        "year_completed": 2019
+      }
+    ],
+    "experience": [
+      {
+        "role": "Facharzt für Radiologie",
+        "employer": "Klinikum St. Georg Leipzig",
+        "start": "2018-02-15",
+        "highlights": [
+          "Leitung MRT inkl. Protokollbau/-optimierung (3.0 T Prisma fit, 1.5 T Altea)",
+          "IT-Verantwortung Syngo.via, federführend KI-Integration",
+          "Regelmäßige 24-h-Bereitschafts-/Rufdienste für Notfalldiagnostik (X-ray/CT/MRT) inkl. Teleradiologie für mehrere Standorte",
+          "Abteilungsweite Dienst-/Personalplanung (leitungsnah)",
+          "Studien/Forschungsschwerpunkt: MRT Rektumkarzinom, Publikationserfahrung"
+        ]
+      }
+    ],
+    "skills": {
+      "clinical": [
+        "MRT (Protokollierung, Sequenzoptimierung, QA)",
+        "CT (Notfall, Polytrauma, Angio, Dosismanagement)",
+        "Konventionelles Röntgen",
+        "Teleradiologie (Notfall-Body/Neuro)",
+        "Befundqualität, strukturierte Befunde"
+      ],
+      "technical": [
+        "Siemens MR (Prisma fit 3T, Altea 1.5T)",
+        "Syngo.via (Konfiguration/Workflows)",
+        "PACS/RIS (Integration, HL7/DICOM, MWL, Router)",
+        "KI-Integration (PACS-nah/Cloud, Orchestrierung)",
+        "Skript/Automatisierung (z. B. Protokollsets, QA)"
+      ],
+      "leadership": [
+        "Dienst-/Personalplanung",
+        "Projektleitung (KI-/IT-Rollouts)",
+        "Ausbildung/Coaching (MTR/MTRAs, Kolleg:innen)",
+        "Interdisziplinäre Kommunikation"
+      ],
+      "research": [
+        "Studienplanung/Durchführung",
+        "Publizieren",
+        "Methodik (MRT-Technik, Onkologie)"
+      ],
+      "languages": ["Deutsch (C2)", "Englisch (C1)"]
+    },
+    "systems": [
+      "Siemens Healthineers MAGNETOM Prisma fit (3T), MAGNETOM Altea (1.5T)",
+      "syngo MR XA/VE, syngo.via (Server/Thin Client)",
+      "PACS/RIS (vendorspezifisch), DICOM Router, VPN/Teleradiologie",
+      "KI-Plattformen/Apps (Vendor/3rd-party)"
+    ],
+    "awards": [
+      "Promotionspreis der Medizinischen Fakultät FAU (2020)"
+    ]
+  },
+  "tariff": {
+    "employer": "Klinikum St. Georg Leipzig",
+    "agreement": "TV-Ärzte St. Georg Leipzig",
+    "effective_sequences": [
+      {
+        "valid_from": "2024-11-01",
+        "base_adjustment": "+2.5%"
+      },
+      {
+        "valid_from": "2025-04-01",
+        "base_adjustment": "+2.4%"
+      },
+      {
+        "valid_from": "2025-09-01",
+        "base_adjustment": "+2.6%"
+      },
+      {
+        "valid_from": "2026-04-01",
+        "base_adjustment": "+2.5%"
+      }
+    ],
+    "pay_groups": [
+      {
+        "group": "EG II (Fachärzt:innen)",
+        "notes": "Monatsgrundentgelt (Vollzeit) – exemplarisch Stufe 1 aus Gehaltsmitteilung 07/2025.",
+        "table": [
+          { "valid_from": "2025-04-01", "step": 1, "monthly_base_eur": 6910 },
+          { "valid_from": "2025-09-01", "step": 1, "monthly_base_eur": 7089.66 },
+          { "valid_from": "2026-04-01", "step": 1, "monthly_base_eur": 7267.90 }
+        ],
+        "individual_hourly_formula": "individuelles_Stundenentgelt = Monatsentgelt * 12 / (52 * tarifliche_Wochenstunden)",
+        "example_week_hours": 40
+      }
+    ],
+    "allowances": {
+      "shift": [
+        {
+          "name": "Schichtzulage (monatlich)",
+          "values": [
+            { "valid_from": "2024-11-01", "amount_eur": 200 },
+            { "valid_from": "2025-04-01", "amount_eur": 220 },
+            { "valid_from": "2025-09-01", "amount_eur": 240 }
+          ]
+        },
+        {
+          "name": "Wechselschicht – Nachtzuschlag (je Stunde)",
+          "values": [
+            { "valid_from": "2024-11-01", "amount_eur": 7.5 },
+            { "valid_from": "2025-04-01", "amount_eur": 8.25 },
+            { "valid_from": "2025-09-01", "amount_eur": 9.0 }
+          ]
+        }
+      ],
+      "percentage_surcharges": [
+        { "type": "Nacht", "percent": 15 },
+        { "type": "Sonntag", "percent": 25 },
+        { "type": "Feiertag (ohne Freizeitausgleich)", "percent": 135 },
+        { "type": "Feiertag (mit Freizeitausgleich)", "percent": 35 }
+      ],
+      "on_call": {
+        "bereitschaftsdienst": {
+          "hourly_rate_eur": [
+            { "valid_from": "2025-04-01", "group": "EG II", "amount": 38.03 }
+          ],
+          "tiers": [
+            {
+              "tier": "I",
+              "working_time_credit_percent": 12.5,
+              "notes": "geringere Inanspruchnahme"
+            },
+            {
+              "tier": "II",
+              "working_time_credit_percent": 16.67,
+              "notes": "mittlere Inanspruchnahme"
+            },
+            {
+              "tier": "III",
+              "working_time_credit_percent": 25,
+              "notes": "höhere Inanspruchnahme (Beispielwert, gemäß Hauspraxis definieren)"
+            }
+          ]
+        },
+        "rufbereitschaft": {
+          "base_percent_steps": [
+            { "label": "Werktag abends", "percent": 9.21 },
+            { "label": "Werktag nacht", "percent": 12.90 },
+            { "label": "Samstag", "percent": 10.32 },
+            { "label": "Sonntag", "percent": 11.11 },
+            { "label": "Feiertag", "percent": 13.34 }
+          ],
+          "calculation_base": "individuelles Stundenentgelt (z. B. 39,73 € lt. Gehaltsmitteilungspraxis, abhängig von EG/Stufe/Arbeitszeit)"
+        }
+      }
+    },
+    "payroll_sample": {
+      "month": "2025-07",
+      "base_pay_eur": 6910,
+      "bd_hourly_eur": 38.03,
+      "rb_factor_examples": [
+        { "factor": 12.9, "base_hour_eur": 39.73 },
+        { "factor": 13.34, "base_hour_eur": 39.73 },
+        { "factor": 11.11, "base_hour_eur": 39.73 },
+        { "factor": 10.32, "base_hour_eur": 39.73 },
+        { "factor": 9.21, "base_hour_eur": 39.73 }
+      ],
+      "comment": "Konkrete Lohnarten/Schlüssel aus der Gehaltsmitteilung; dient der Plausibilisierung der Tariflogik in der App."
+    }
+  },
+  "tracks": [
+    {
+      "id": "klinikum_st_georg",
+      "title": "Klinische Laufbahn – Klinikum St. Georg Leipzig",
+      "modes": ["On-site", "Teil-remote (Teleradiologie)"],
+      "employers": [
+        {
+          "name": "Klinikum St. Georg Leipzig",
+          "site": "Zentrale Radiologie (inkl. teleradiol. Verbund)",
+          "roles": [
+            {
+              "title": "Facharzt Radiologie (EG II)",
+              "contract": "Tarif (TV-Ärzte St. Georg)",
+              "workload": "Vollzeit oder Teilzeit",
+              "schedule": "Regeldienst + Bereitschaftsdienste/Rufbereitschaften nach Planung",
+              "compensation": {
+                "base": [
+                  { "valid_from": "2025-04-01", "step1_monthly_eur": 6910 },
+                  { "valid_from": "2025-09-01", "step1_monthly_eur": 7089.66 },
+                  { "valid_from": "2026-04-01", "step1_monthly_eur": 7267.90 }
+                ],
+                "on_call": {
+                  "bd_hourly_eur": 38.03,
+                  "rb_percent": [9.21, 10.32, 11.11, 12.9, 13.34],
+                  "surcharges": { "night_%": 15, "sun_%": 25, "holiday_%_with_TOIL": 35, "holiday_%_no_TOIL": 135 }
+                },
+                "shift_allowances": {
+                  "monthly_shift_eur": [{ "2025-04-01": 220 }, { "2025-09-01": 240 }],
+                  "night_hourly_eur": [{ "2025-04-01": 8.25 }, { "2025-09-01": 9.0 }]
+                }
+              },
+              "requirements": [
+                "Facharztanerkennung Radiologie",
+                "Hohe MRT/CT-Routine, Notfallkompetenz, Teleradiologie",
+                "Teilnahme Dienste/RB"
+              ],
+              "growth_to": ["Oberarzt (EG III)", "Leitender Oberarzt (EG IV)"]
+            },
+            {
+              "title": "Oberarzt Radiologie (EG III)",
+              "contract": "Tarif",
+              "workload": "Vollzeit",
+              "schedule": "Leitungsnahe Aufgaben, Supervision, Dienste",
+              "compensation": {
+                "base_hint": "Entgelttabelle EG III lt. TV-Ärzte St. Georg (analog Erhöhungsreihenfolge).",
+                "components": ["Monatsentgelt EG III (Stufen nach Erfahrungszeit)", "Dienste/RB nach § 12/§ 12a", "Zuschläge § 11", "Funktions-/Leistungsentgelt falls vereinbart"]
+              },
+              "requirements": ["Facharzt Radiologie", "Leitungs-/Ausbildungskompetenz", "Schwerpunkt/Fachkunde je nach Bereich"]
+            },
+            {
+              "title": "Leitender Oberarzt Radiologie (EG IV)",
+              "contract": "Tarif",
+              "workload": "Vollzeit",
+              "schedule": "Bereichs-/Teamleitung, Strategie/Qualität",
+              "compensation": {
+                "base_hint": "Entgelttabelle EG IV lt. TV-Ärzte St. Georg (analog Erhöhungsreihenfolge).",
+                "components": ["Monatsentgelt EG IV", "Dienste/RB", "Zuschläge", "Funktions-/Leistungsentgelt"]
+              },
+              "requirements": ["Mehrjährige Oberarzterfahrung", "Bereichsleitung, Budget/Prozesse", "Qualitäts-/Risikomanagement"]
+            }
+          ]
+        }
+      ],
+      "notes": "Tarif- und Lohnarten-Logik in der App exakt gemäß TV-Ärzte St. Georg abgebildet."
+    },
+    {
+      "id": "teleradiology_full_remote",
+      "title": "100 % Remote – Teleradiologie (Festanstellung oder Freiberuflich)",
+      "modes": ["Remote (Home-Reporting)", "Hybrid (optional)"],
+      "employers": [
+        {
+          "name": "TMC / Unilabs (Telemedicine Clinic)",
+          "url": "https://www.telemedicineclinic.com/careers/",
+          "roles": [
+            {
+              "title": "Consultant Radiologist – Emergency Body/Neuro (Remote)",
+              "contract": "Festanstellung (EU) oder Contractor (je nach Land)",
+              "workload": "Teilzeit (≥10–12 h/Woche) bis Vollzeit",
+              "schedule": "Flexibel, Schwerpunkt Abende/Nächte/Wochenenden möglich",
+              "compensation": {
+                "model": "Festgehalt + leistungs-/fallbasierte Komponenten (je nach Team/Region)",
+                "indicative_annual_eur": "110000–160000",
+                "notes": "Basis deutlich über öffentlichem Sektor möglich; genaue Ausgestaltung länder-/teamabhängig."
+              },
+              "requirements": [
+                "Facharzt Radiologie, EU-Approbation",
+                "Subspektrum (Body/Neuro/MSK) wünschenswert",
+                "Home-Reporting-Setting, Qualitäts-/Peer-Review-Struktur"
+              ],
+              "source_tags": ["TMC Careers", "TMC Academy/QA/Remote Struktur"]
+            }
+          ]
+        },
+        {
+          "name": "Freiberuflich / Honorar (diverse Anbieter, Klinikvertretungen)",
+          "url": "",
+          "roles": [
+            {
+              "title": "Honorarärztliche Teleradiologie (Remote)",
+              "contract": "Freiberuflich",
+              "workload": "Skalierbar (z. B. 4–14 Nächte/Monat)",
+              "schedule": "Primär Nacht/WE; Abrechnung pro Stunde/Fall",
+              "compensation": {
+                "hourly_rate_eur": "80–120",
+                "examples": [
+                  "110 €/h → ~18.480 €/Monat bei 168 h",
+                  "95 €/h → ~15.960 €/Monat bei 168 h"
+                ],
+                "billing": "Stundensatz/Fallpauschalen, zzgl. USt (sofern kein §19 UStG), eigene SV/Altersvorsorge"
+              },
+              "requirements": ["Eigene IT/DSGVO-Setup, VPN/PACS-Anbindung, Berufshaftpflicht"],
+              "source_tags": ["Marktübersicht Honorararzt"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "industry_vendor_siements_ge",
+      "title": "Industrie – Hersteller (Siemens Healthineers, GE HealthCare)",
+      "modes": ["Hybrid", "Remote (home-based) + Reiseanteil"],
+      "employers": [
+        {
+          "name": "Siemens Healthineers",
+          "url": "https://jobs.siemens-healthineers.com/",
+          "roles": [
+            {
+              "title": "MR Clinical/Application Specialist (f/m/d)",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Deutschlandweit, 50–80 % Reise (Kunden-Sites, Kongresse, Schulungen)",
+              "compensation": {
+                "base_annual_eur": "80.000–105.000",
+                "bonus_target_pct": 10,
+                "benefits": ["Dienstwagen/Car-Allowance (rollenabhängig)", "Home-Office Ausstattung", "Weiterbildung/Academy"]
+              },
+              "requirements": [
+                "Tiefe MR-Expertise (Protokollierung, Klinik-Workflows)",
+                "Schulung/Go-Live-Erfahrung",
+                "Kommunikative Stärke, Englisch"
+              ],
+              "source_tags": ["Siemens Jobs Portal", "MR Application Specialist/Clinical Application EMEA"]
+            }
+          ]
+        },
+        {
+          "name": "GE HealthCare",
+          "url": "https://careers.gehealthcare.com/",
+          "roles": [
+            {
+              "title": "Clinical Education Specialist CT/MR (DACH, remote)",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Home-based in DE, hoher Reiseanteil DACH",
+              "compensation": {
+                "base_annual_eur": "75.000–100.000",
+                "bonus_target_pct": 10,
+                "benefits": ["Firmenwagen/Allowance", "Weiterbildungsprogramme", "Internationales Umfeld"]
+              },
+              "requirements": [
+                "Tiefe CT/MR-Praxis",
+                "Kundentrainings/Workflow-Optimierung",
+                "Reisebereitschaft, Englisch"
+              ],
+              "source_tags": ["GE Careers – Clinical Education Specialist (remote/home-based DACH)"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vendor_pacs_ris",
+      "title": "Medizinische IT – PACS/RIS/Enterprise Imaging (Sectra, Agfa HealthCare)",
+      "modes": ["Remote/Hybrid", "Kundeneinsätze"],
+      "employers": [
+        {
+          "name": "Sectra",
+          "url": "https://career.sectra.com/job-opportunities/",
+          "roles": [
+            {
+              "title": "Application Specialist (Enterprise Imaging/PACS)",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Hybrid/Remote, europaweite Kunden",
+              "compensation": {
+                "base_annual_eur": "65.000–95.000",
+                "bonus_target_pct": 10,
+                "benefits": ["Home-Office", "Weiterbildung", "Firmenlaptop/Telefon"]
+              },
+              "requirements": [
+                "DICOM/HL7, MWL, Modalitätsintegration",
+                "Workflow-Know-how Radiologie",
+                "Kommunikation/Schulung"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Agfa HealthCare",
+          "url": "https://careers.agfa.com/",
+          "roles": [
+            {
+              "title": "Technical/Clinical Specialist – Enterprise Imaging (Remote Support/Field)",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Hybrid (Home/Office) + Kundenreisen",
+              "compensation": {
+                "base_annual_eur": "65.000–90.000",
+                "bonus_target_pct": 10,
+                "benefits": ["Home-Office", "Firmenwagen je nach Rolle", "Zertifizierungen/Trainings"]
+              },
+              "requirements": ["PACS/RIS, Scripting/SQL von Vorteil", "Troubleshooting, Kundenkommunikation"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medtech_startups_ai",
+      "title": "Med-Tech/AI Startups – Produkt, Integration, Customer Success",
+      "modes": ["Remote-first", "Hybrid (München/Berlin)"],
+      "employers": [
+        {
+          "name": "Smart Reporting",
+          "url": "https://www.smart-reporting.com/company/careers",
+          "roles": [
+            {
+              "title": "Integration Architect / Application & Adoption Specialist / Customer Success Manager",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Remote/Hybrid, Kundenimplementierungen",
+              "compensation": {
+                "base_annual_eur": "70.000–95.000",
+                "bonus_target_pct": 10,
+                "equity": "rollen-/seniorityabhängig"
+              },
+              "requirements": [
+                "Radiologie-Workflow, Schnittstellen (PACS/RIS)",
+                "Stakeholder-Management",
+                "Deutsch/Englisch"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "deepc",
+          "url": "https://www.deepc.ai/about/career",
+          "roles": [
+            {
+              "title": "Clinical Integration / Solutions – Radiology AI Platform",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Remote-first, EU-weit",
+              "compensation": {
+                "base_annual_eur": "75.000–105.000",
+                "bonus_target_pct": 10,
+                "equity": "möglich"
+              },
+              "requirements": ["KI-Integration, PACS-nah, Datenschutz/Regulatorik", "Kommunikation, Englisch"]
+            }
+          ]
+        },
+        {
+          "name": "mediaire",
+          "url": "https://mediaire.ai/en/career/",
+          "roles": [
+            {
+              "title": "Customer Success / Technical Product (MRI-AI: mdbrain/mdprostate)",
+              "contract": "Unbefristet",
+              "workload": "Vollzeit",
+              "schedule": "Remote/Berlin-Hybrid",
+              "compensation": {
+                "base_annual_eur": "70.000–100.000",
+                "bonus_target_pct": 10
+              },
+              "requirements": ["MRT-Know-how, KI-Workflows, Kundenbetreuung", "Deutsch/Englisch"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "academia_university",
+      "title": "Universitär-akademische Laufbahn (W2/W3, Sachsen)",
+      "modes": ["On-site + Forschung/Lehre", "Teil-Teleradiologie je nach Klinik möglich"],
+      "employers": [
+        {
+          "name": "Universitätsmedizin (Beispiel: UKL/MedFakultät Leipzig, Sachsen)",
+          "roles": [
+            {
+              "title": "W2-Professor (Radiologie) – mit Leitungsfunktion(en)",
+              "contract": "W-Besoldung (Sachsen)",
+              "workload": "Vollzeit",
+              "schedule": "Forschung/Lehre/Patientenversorgung",
+              "compensation": {
+                "base_monthly_eur": "6.826–7.955",
+                "performance_allowances": "Ruf-/Leistungsbezüge verhandelbar, Funktionszulagen möglich"
+              },
+              "requirements": ["Habilitation/Äquivalent, Drittmittel, Lehre", "Fachliche Schwerpunkte (MRT) von Vorteil"]
+            },
+            {
+              "title": "W3-Professor (Radiologie/Institutsleitung)",
+              "contract": "W-Besoldung (Sachsen)",
+              "workload": "Vollzeit",
+              "compensation": {
+                "base_monthly_eur": "7.690–8.146",
+                "performance_allowances": "umfangreiche Leistungs-/Funktionsbezüge"
+              },
+              "requirements": ["Leitungs-/Managementerfahrung", "Exzellente Publikations- und Drittmittelleistung"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "private_practice_mvz",
+      "title": "Niedergelassen/MVZ – Partner-/Zielrichtung",
+      "modes": ["On-site", "Teil-Remote Befund (je nach Setup)"],
+      "employers": [
+        {
+          "name": "MVZ/Überörtliche BAG (diverse Anbieter in D)",
+          "roles": [
+            {
+              "title": "Facharzt Radiologie – Senior mit Partner-Perspektive",
+              "contract": "Anstellung mit Option Beteiligung",
+              "workload": "Vollzeit/Teilzeit",
+              "schedule": "Regeldienst, geringe bis moderate Dienste (je nach MVZ)",
+              "compensation": {
+                "base_annual_eur": "110.000–150.000",
+                "variable": "umsatz-/leistungsabhängig (RV-Quote, PET/CT/MRT-Leistungsportfolios)",
+                "partner_takehome_indicative_eur": "180.000–300.000+ (region/portfolioabhängig)"
+              },
+              "requirements": ["Breites diagnostisches Spektrum", "Wirtschaftliches Verständnis, Teamführung"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consulting_interim_it",
+      "title": "Beratung/Interim – Imaging-IT, Prozesse, KI",
+      "modes": ["Freiberuflich (remote/on-site)", "Projektbezogen"],
+      "employers": [
+        {
+          "name": "Freelance Consulting (Krankenhäuser, Vendoren, Integratoren)",
+          "roles": [
+            {
+              "title": "Senior Consultant Radiologie-IT/KI",
+              "contract": "Freiberuflich, Tagessatz",
+              "workload": "Projektweise (z. B. 2–4 Tage/Woche)",
+              "schedule": "Remote-Vorbereitung, Workshops/Go-Lives vor Ort",
+              "compensation": {
+                "day_rate_eur": "800–1.200",
+                "hourly_rate_eur": "100–150",
+                "billing": "zzgl. USt, Reisekosten nach Vereinbarung"
+              },
+              "requirements": ["PACS/RIS/HL7/DICOM, KI-Orchestrierung, Change-/Projektmanagement"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "TV-Ärzte St. Georg Leipzig (durchgeschrieben, Stand 2022) + 5./6. Änderungstarifvertrag",
+      "type": "internal_pdf",
+      "files": [
+        "/mnt/data/TV-Ärzte St. Georg Leipzig (durchgeschrieben Stand 2022).cleaned.pdf",
+        "/mnt/data/5. Änderungstarifvertrag (2024).cleaned.pdf",
+        "/mnt/data/6. Änderungstarifvertrag (2025).cleaned.pdf"
+      ],
+      "key_points": [
+        "EG II Grundentgelt Stufe 1: 6.910 € ab 01.04.2025",
+        "Bereitschaftsdienst-Stundenentgelt EG II: 38,03 € ab 01.04.2025",
+        "Schichtzulage: 200 € (11/2024) → 220 € (04/2025) → 240 € (09/2025)",
+        "Wechselschicht Nacht je Stunde: 7,50 € (11/2024) → 8,25 € (04/2025) → 9,00 € (09/2025)",
+        "Zuschläge § 11: Nacht 15 %, Sonntag 25 %, Feiertag 35 % (mit Freizeitausgleich) bzw. 135 % (ohne)"
+      ]
+    },
+    {
+      "label": "Gehaltsmitteilung 07/2025 (Klinikum St. Georg Leipzig)",
+      "type": "internal_pdf",
+      "files": ["/mnt/data/Gehaltsmitteilung 2025-07.pdf"],
+      "key_points": [
+        "Monatsgrundentgelt 6.910 €",
+        "BD-Stunden 38,03 €",
+        "Rufbereitschafts-Bewertungen (z. B. 12,90 %, 13,34 %, 11,11 %, 10,32 %, 9,21 %) mit individuellem Stundenentgelt-Bezug"
+      ]
+    },
+    {
+      "label": "TMC/Unilabs – Careers/Home-Reporting",
+      "type": "web",
+      "hrefs": [
+        "https://www.telemedicineclinic.com/careers/",
+        "https://jobs.jobvite.com/telemedicine-clinic/job/oYKLgfwt"
+      ],
+      "notes": "Remote-Home-Reporting, QA/Academy, flexibles Arbeitszeitmodell"
+    },
+    {
+      "label": "Siemens Healthineers – Application/Clinical Specialist",
+      "type": "web",
+      "hrefs": [
+        "https://jobs.siemens-healthineers.com/",
+        "https://jobs.siemens.com/careers/job/563156125673613"
+      ]
+    },
+    {
+      "label": "GE HealthCare – Clinical Education Specialist (remote DACH)",
+      "type": "web",
+      "hrefs": [
+        "https://careers.gehealthcare.com/",
+        "https://www.indeed.com/viewjob?jk=a2331d40c2c3ca82"
+      ]
+    },
+    {
+      "label": "Sectra – Job Opportunities (PACS/Application)",
+      "type": "web",
+      "hrefs": ["https://career.sectra.com/job-opportunities/", "https://medical.sectra.com/"]
+    },
+    {
+      "label": "Agfa HealthCare – Careers/Enterprise Imaging",
+      "type": "web",
+      "hrefs": ["https://careers.agfa.com/", "https://www.agfahealthcare.com/"]
+    },
+    {
+      "label": "Smart Reporting – Careers",
+      "type": "web",
+      "hrefs": [
+        "https://www.smart-reporting.com/company/careers",
+        "https://apply.workable.com/smartreporting/"
+      ]
+    },
+    {
+      "label": "deepc – Careers/Platform",
+      "type": "web",
+      "hrefs": [
+        "https://www.deepc.ai/about/career",
+        "https://www.deepc.ai/"
+      ]
+    },
+    {
+      "label": "mediaire – Careers/Products",
+      "type": "web",
+      "hrefs": [
+        "https://mediaire.ai/en/career/",
+        "https://mediaire.ai/en/mdbrain/"
+      ]
+    },
+    {
+      "label": "Honorararzt-Marktbandbreiten (Deutschland, 2024/2025)",
+      "type": "web",
+      "hrefs": [
+        "https://www.future-doctor.de/de_at/honorararzt-gehalt/"
+      ]
+    },
+    {
+      "label": "W-Besoldung Sachsen – Orientierungswerte",
+      "type": "web",
+      "hrefs": [
+        "https://www.berufszentrum-akademie.de/magazin/blog/besoldung-w-sachsen/",
+        "https://www.berufszentrum-akademie.de/magazin/besoldung/land/sachsen/tabelle/w2/",
+        "https://www.berufszentrum-akademie.de/magazin/besoldung/land/sachsen/tabelle/w3/"
+      ]
+    }
+  ]
+}
