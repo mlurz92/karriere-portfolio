@@ -1,1 +1,581 @@
 
+<!doctype html>
+<html lang="de" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Karriere-Portfolio · Dr. med. Markus Lurz · Radiologie · DACH</title>
+  <meta name="description" content="Interaktive Karriere-Landkarte und Vergütungs-/Dienstrechner für Dr. med. Markus Lurz (Radiologie): Klinik, Teleradiologie, Industrie (Siemens Healthineers, GE, Agfa, Sectra), MedTech/AI, Akademia. Mit Quellen & Tarif-Validierung (TV-Ärzte/St. Georg)." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Karriere-Portfolio · Dr. med. Markus Lurz" />
+  <meta property="og:description" content="Interaktive Karrierepfade, konkrete Rollen & Arbeitgeber, dynamischer Tarif-/Dienstrechner (TV-Ärzte/St. Georg), Quellenhub." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Karriere-Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24'%3E%3Cpath fill='%23088' d='M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2m1 15h-2v-2h2zm0-4h-2V7h2z'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind (utility layer for layout only; components in style.css) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- App stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Preload hints -->
+  <link rel="preload" href="js/vendor.js" as="script" />
+  <link rel="preload" href="js/app.js" as="script" />
+  <link rel="preload" href="data/careers.json" as="fetch" crossorigin="anonymous" />
+
+  <!-- CDN registry for vendor loader (consumed by js/vendor.js) -->
+  <script>
+    window.__CDN__ = {
+      gsap: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
+      gsapScroll: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+      lottie: "https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js",
+      tippy: "https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js",
+      tippyCore: "https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.min.js",
+      vivus: "https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js",
+      splide: "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js",
+      splideCSS: "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    };
+  </script>
+
+  <!-- No-JS notice styles (kept tiny to avoid FOUC) -->
+  <style>
+    .nojs-notice{position:fixed;inset:auto 1rem 1rem 1rem;background:#111827;color:#fff;padding:.75rem 1rem;border-radius:.5rem;font:600 14px/1.4 Inter,system-ui}
+    @media (prefers-color-scheme: light){.nojs-notice{background:#111;color:#fff}}
+  </style>
+</head>
+<body class="antialiased bg-surface text-ink">
+  <noscript>
+    <div class="nojs-notice">JavaScript ist deaktiviert. Die interaktive Anwendung (Daten, Rechner, Animationen) benötigt JavaScript.</div>
+  </noscript>
+
+  <!-- ===========================
+       Global Shell / App Layout
+       =========================== -->
+  <header id="app-header" class="sticky top-0 z-50 backdrop-blur supports-backdrop-blur bg-header/70 border-b border-divider">
+    <div class="container mx-auto px-4 py-3 flex items-center gap-3">
+      <!-- Brand -->
+      <a href="#/" class="flex items-center gap-3 group" aria-label="Startseite">
+        <svg id="logo-svg" width="36" height="36" viewBox="0 0 24 24" class="stroke-brand fill-none">
+          <path d="M12 3L3 9l9 6 9-6-9-6Z" stroke-width="1.5" />
+          <path d="M7 12l5 3 5-3" stroke-width="1.5" />
+          <path d="M12 21V9" stroke-width="1.5" />
+        </svg>
+        <div class="leading-tight">
+          <div class="text-sm uppercase tracking-widest text-muted">Karriere-Portfolio</div>
+          <div class="font-semibold text-lg">Dr. med. Markus Lurz</div>
+        </div>
+      </a>
+
+      <!-- Nav -->
+      <nav class="ml-auto hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
+        <a class="nav-link" href="#/overview">Übersicht</a>
+        <a class="nav-link" href="#/profile">Profil</a>
+        <a class="nav-link" href="#/tracks">Karrierepfade</a>
+        <a class="nav-link" href="#/calculator">Tarif-&nbsp;Rechner</a>
+        <a class="nav-link" href="#/compare">Vergleich</a>
+        <a class="nav-link" href="#/sources">Quellen</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="ml-2 flex items-center gap-2">
+        <button id="cmdk-btn" class="btn-ghost" aria-haspopup="dialog" aria-controls="cmdk-dialog" title="Suchen (⌘/Ctrl + K)">
+          <svg viewBox="0 0 24 24" width="20" height="20" class="stroke-current">
+            <path d="M11 4a7 7 0 1 1-4.95 2.05M11 4V2M11 22v-2M4 11H2m20 0h-2M5.64 5.64 4.22 4.22m14.14 14.14-1.42-1.42M5.64 18.36 4.22 19.78M19.78 4.22l-1.42 1.42" fill="none" stroke-width="1.5"/>
+          </svg>
+          <span class="hidden sm:inline">Suchen</span>
+        </button>
+        <button id="theme-toggle" class="btn-ghost" title="Theme umschalten" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" class="stroke-current">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="none" stroke-width="1.5"/>
+          </svg>
+          <span class="sr-only">Theme umschalten</span>
+        </button>
+        <button id="menu-toggle" class="btn-ghost md:hidden" aria-expanded="false" aria-controls="mobile-nav">
+          <svg viewBox="0 0 24 24" width="22" height="22" class="stroke-current">
+            <path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke-width="1.5"/>
+          </svg>
+          <span class="sr-only">Menü</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="md:hidden border-t border-divider hidden">
+      <nav class="container mx-auto px-4 py-2 grid grid-cols-2 gap-2" aria-label="Mobile Navigation">
+        <a class="nav-item" href="#/overview">Übersicht</a>
+        <a class="nav-item" href="#/profile">Profil</a>
+        <a class="nav-item" href="#/tracks">Karrierepfade</a>
+        <a class="nav-item" href="#/calculator">Tarif-Rechner</a>
+        <a class="nav-item" href="#/compare">Vergleich</a>
+        <a class="nav-item" href="#/sources">Quellen</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Progress bar / top loader -->
+  <div id="top-loader" class="top-loader" aria-hidden="true"></div>
+
+  <!-- ===========================
+       Main Viewport
+       =========================== -->
+  <main id="app" class="container mx-auto px-4 pb-24">
+    <!-- HERO -->
+    <section id="hero" class="pt-10 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-7">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+          Radiologie · <span class="text-gradient">MRT&nbsp;Exzellenz</span> · IT &amp; KI&nbsp;Integration
+        </h1>
+        <p class="mt-4 text-lg text-muted max-w-2xl">
+          Facharzt Radiologie (seit 11/2023) · Leitung MRT (3.0 T Prisma fit, 1.5 T Altea) · syngo.via · Protokollentwicklung · 24/7 Notfall · Teleradiologie ·
+          Tarif- &amp; Dienstrechner (TV-Ärzte/St. Georg) mit Validierung an realer Gehaltsmitteilung 07/2025.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="btn-primary" href="#/tracks">Karrierepfade ansehen</a>
+          <a class="btn-outline" href="#/calculator">Tarif-/Dienstrechner öffnen</a>
+          <button class="btn-ghost with-stroke" id="play-intro" data-anim="logo-stroke">
+            <svg width="22" height="22" viewBox="0 0 24 24" class="stroke-brand">
+              <path d="M8 5v14l11-7z" fill="none" stroke-width="1.5"/>
+            </svg>
+            Intro-Animation
+          </button>
+        </div>
+
+        <ul class="mt-6 list-inline text-sm text-muted">
+          <li>Aktualisierte Entgelttabellen (11/2024 · 04/2025 · 09/2025 · 04/2026) & Zuschläge.</li>
+          <li>RB-Faktoren & BD-Bewertungen gemäß TV-Ärzte/St. Georg.</li>
+          <li>Quellen: Änderungs-TV 2024/2025 und durchgeschriebene Fassung 2022.</li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-5">
+        <div id="lottie-hero" class="lottie h-[260px] md:h-[340px] rounded-2xl ring-1 ring-inset ring-divider"></div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="section-space">
+      <header class="section-header">
+        <h2 class="section-title">Profil &amp; Qualifikationen</h2>
+        <p class="section-subtitle">Biografie, Schwerpunkte, Technik- &amp; Leadership-Fokus.</p>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="card">
+          <h3 class="card-title">Kurzprofil</h3>
+          <ul class="feature-list" id="profile-summary">
+            <!-- gefüllt via app.js -->
+          </ul>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Kernkompetenzen</h3>
+          <ul class="tag-cloud" id="skills-cloud">
+            <!-- tags via app.js -->
+          </ul>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Technologie-Stack</h3>
+          <ul class="feature-list" id="tech-stack">
+            <!-- gefüllt via app.js -->
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- TRACKS OVERVIEW -->
+    <section id="tracks" class="section-space">
+      <header class="section-header">
+        <h2 class="section-title">Karrierepfade</h2>
+        <div class="section-actions">
+          <label class="input-wrap">
+            <svg viewBox="0 0 24 24" width="18" height="18" class="stroke-current">
+              <circle cx="11" cy="11" r="7" fill="none" stroke-width="1.5"></circle>
+              <path d="M21 21l-4.3-4.3" fill="none" stroke-width="1.5"></path>
+            </svg>
+            <input id="track-filter" type="search" placeholder="Suchen (Pfad, Rolle, Arbeitgeber …)" autocomplete="off" />
+          </label>
+          <div class="segmented" role="tablist" aria-label="Filter">
+            <button role="tab" aria-selected="true" data-filter="all">Alle</button>
+            <button role="tab" data-filter="clinical">Klinisch</button>
+            <button role="tab" data-filter="remote">Remote</button>
+            <button role="tab" data-filter="industry">Industrie</button>
+            <button role="tab" data-filter="academic">Akademisch</button>
+          </div>
+        </div>
+        <p class="section-subtitle">Jeder Pfad enthält konkrete Rollen mit Beschreibung, Anforderungen, Vergütung, Arbeitszeiten, Tech, Risiken sowie verifizierte Quellen.</p>
+      </header>
+
+      <div id="track-cards" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- Karten via Template -->
+      </div>
+
+      <!-- Splide carousel (highlights) -->
+      <div class="mt-10">
+        <div id="highlights" class="splide" aria-label="Highlights">
+          <div class="splide__track">
+            <ul class="splide__list" id="highlight-slides">
+              <!-- slides via app.js -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section id="calculator" class="section-space">
+      <header class="section-header">
+        <h2 class="section-title">Tarif- & Dienstrechner (TV-Ärzte/St. Georg)</h2>
+        <p class="section-subtitle">
+          Tabellenentgelt, Bereitschaftsdienst (Stufen I–III), Rufbereitschaft (Zeitfenster/Faktoren), Zuschläge (Nacht/WE/Feiertag), Versionierung der Tabellenwerte nach Stichtagen.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Input Panel -->
+        <form id="calc-form" class="card lg:col-span-1" novalidate>
+          <h3 class="card-title">Eingaben</h3>
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Datum (Leistungsmonat)</span>
+              <input type="month" id="calc-date" required />
+            </label>
+            <label class="form-field">
+              <span>Entgeltgruppe</span>
+              <select id="calc-eg" required>
+                <option>EG I</option>
+                <option selected>EG II</option>
+                <option>EG III</option>
+                <option>EG IV</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Stufe</span>
+              <select id="calc-stufe" required>
+                <option value="1" selected>Stufe 1</option>
+                <option value="2">Stufe 2</option>
+                <option value="3">Stufe 3</option>
+                <option value="4">Stufe 4</option>
+                <option value="5">Stufe 5</option>
+                <option value="6">Stufe 6</option>
+                <option value="7">Stufe 7</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>BD-Stufe</span>
+              <select id="calc-bd-stufe">
+                <option value="I">I (65 %)</option>
+                <option value="II">II (80 %)</option>
+                <option value="III" selected>III (95 %)</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>BD-Stunden (Monat)</span>
+              <input type="number" id="calc-bd-hours" min="0" step="0.01" placeholder="z. B. 55.62" />
+            </label>
+
+            <details class="col-span-full">
+              <summary class="summary">Rufbereitschaft – Zeitfenster</summary>
+              <div class="rb-grid">
+                <label class="form-field"><span>Werktags 6–20 Uhr</span><input type="number" id="rb-wd-6-20" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Werktags 4–6 Uhr</span><input type="number" id="rb-wd-4-6" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Werktags 20–6 Uhr</span><input type="number" id="rb-wd-20-6" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Samstag</span><input type="number" id="rb-sat" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Sonntag/Feiertag</span><input type="number" id="rb-sun" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Sonst./Sonder</span><input type="number" id="rb-other" min="0" step="0.25" value="0"></label>
+              </div>
+            </details>
+
+            <details class="col-span-full">
+              <summary class="summary">Zuschläge</summary>
+              <div class="rb-grid">
+                <label class="form-field"><span>Nachtstunden (BD)</span><input type="number" id="zz-nacht-bd" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Nacht in Wechselschicht (21–6)</span><input type="number" id="zz-nacht-ws" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Sonntag</span><input type="number" id="zz-so" min="0" step="0.25" value="0"></label>
+                <label class="form-field"><span>Feiertag</span><input type="number" id="zz-ft" min="0" step="0.25" value="0"></label>
+              </div>
+            </details>
+          </div>
+
+          <div class="mt-4 flex gap-2">
+            <button type="button" id="calc-run" class="btn-primary">Berechnen</button>
+            <button type="reset" class="btn-ghost">Zurücksetzen</button>
+          </div>
+          <p class="text-xs text-muted mt-3">Rechenlogik gemäß TV-Ärzte/St. Georg (Bewertungen, Faktoren, Tabellenwerte inkl. Stichtags-Versionierung).</p>
+        </form>
+
+        <!-- Results -->
+        <section class="card lg:col-span-2">
+          <h3 class="card-title">Ergebnis</h3>
+          <div id="calc-result" class="result-grid">
+            <div class="result-box">
+              <div class="label">Tabellenentgelt</div>
+              <div class="value" id="res-tabellenentgelt">–</div>
+              <div class="hint" id="res-tabellenentgelt-hint">EG/Stufe je Datum</div>
+            </div>
+            <div class="result-box">
+              <div class="label">BD-Entgelt</div>
+              <div class="value" id="res-bd">–</div>
+              <div class="hint" id="res-bd-hint">Stunden × BD-Stufe × Satz</div>
+            </div>
+            <div class="result-box">
+              <div class="label">RB-Entgelt</div>
+              <div class="value" id="res-rb">–</div>
+              <div class="hint" id="res-rb-hint">Zeitfenster × Faktor × Stundenentgelt</div>
+            </div>
+            <div class="result-box">
+              <div class="label">Zuschläge</div>
+              <div class="value" id="res-zz">–</div>
+              <div class="hint" id="res-zz-hint">Nacht/WS/So/FT gem. § 11</div>
+            </div>
+            <div class="result-box total">
+              <div class="label">Gesamt (brutto, monatl.)</div>
+              <div class="value" id="res-total">–</div>
+              <div class="hint" id="res-total-hint">ohne Steuern/Sozialabgaben</div>
+            </div>
+          </div>
+
+          <div id="calc-sources" class="mt-6 text-sm text-muted">
+            <!-- dynamische Quellenliste passend zu verwendeten Versionen -->
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section id="compare" class="section-space">
+      <header class="section-header">
+        <h2 class="section-title">Vergleich von Optionen</h2>
+        <p class="section-subtitle">Gegenüberstellung von bis zu 4 Rollen (Gehalt/Arbeitszeit/Remote/Impact/Risiken).</p>
+      </header>
+
+      <div class="card">
+        <div class="compare-grid">
+          <div class="compare-bucket">
+            <h3 class="bucket-title">Auswahl</h3>
+            <div id="compare-select" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+              <!-- Auswahl-Cards via app.js -->
+            </div>
+            <div class="mt-3 flex gap-2">
+              <button id="compare-run" class="btn-primary">Vergleichen</button>
+              <button id="compare-clear" class="btn-ghost">Leeren</button>
+            </div>
+          </div>
+
+          <div class="compare-bucket">
+            <h3 class="bucket-title">Ergebnis</h3>
+            <div id="compare-result" class="overflow-x-auto">
+              <!-- Tabelle/Charts via app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section id="sources" class="section-space">
+      <header class="section-header">
+        <h2 class="section-title">Quellen & Dokumente</h2>
+        <p class="section-subtitle">Alle Tarifstellen, Änderungs-TV, Tabellen und Payroll-Validierungen – sauber verlinkt.</p>
+      </header>
+
+      <div class="card">
+        <div id="source-list" class="source-list">
+          <!-- dynamisch aus data/careers.json -->
+        </div>
+        <div class="mt-4 text-xs text-muted">
+          Hinweis: Interne Dokumente (PDF) werden als Referenz mit Dokument-ID angezeigt; öffentlich zugängliche Quellen werden verlinkt.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===========================
+       TEMPLATES (for app.js)
+       =========================== -->
+  <template id="tpl-track-card">
+    <article class="track-card group focus-within:ring-2 focus-within:ring-brand/40" data-track="">
+      <div class="track-card-header">
+        <div class="icon-wrap with-stroke" data-icon></div>
+        <h3 class="track-title" data-title></h3>
+        <span class="track-badge" data-badge></span>
+      </div>
+      <p class="track-desc" data-desc></p>
+      <ul class="track-meta">
+        <li><strong>Typ:</strong> <span data-type></span></li>
+        <li><strong>Remote:</strong> <span data-remote></span></li>
+        <li><strong>Bandbreite:</strong> <span data-salary></span></li>
+      </ul>
+      <div class="track-actions">
+        <button class="btn-primary btn-small" data-action="view">Details</button>
+        <button class="btn-outline btn-small with-stroke" data-action="jobs">Stellen</button>
+        <button class="btn-ghost btn-small" data-action="compare">Vergleichen</button>
+      </div>
+    </article>
+  </template>
+
+  <template id="tpl-job-row">
+    <div class="job-row" data-job-id="">
+      <div class="job-main">
+        <div class="job-title" data-title></div>
+        <div class="job-company" data-company></div>
+        <div class="job-location" data-location></div>
+      </div>
+      <div class="job-meta">
+        <div class="chip" data-type></div>
+        <div class="chip" data-salary></div>
+        <div class="chip" data-schedule></div>
+      </div>
+      <div class="job-actions">
+        <button class="btn-outline btn-small" data-action="open">Details</button>
+        <a class="btn-ghost btn-small" target="_blank" rel="noopener" data-link>Anzeige</a>
+        <button class="btn-ghost btn-small" data-action="compare">Vergleich</button>
+      </div>
+    </div>
+  </template>
+
+  <template id="tpl-source-item">
+    <div class="source-item">
+      <div class="source-title" data-title></div>
+      <div class="source-meta">
+        <span class="chip" data-id></span>
+        <span class="chip" data-date></span>
+        <a class="chip link" target="_blank" rel="noopener" data-url>Öffnen</a>
+      </div>
+      <p class="source-desc" data-desc></p>
+    </div>
+  </template>
+
+  <!-- ===========================
+       MODALS / DRAWERS
+       =========================== -->
+  <!-- Job Detail Modal -->
+  <div id="job-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="job-modal-title" hidden>
+    <div class="modal-backdrop" data-dismiss></div>
+    <div class="modal-card" role="document">
+      <header class="modal-header">
+        <h3 id="job-modal-title" class="modal-title">–</h3>
+        <button class="btn-ghost" data-dismiss aria-label="Schließen">
+          <svg viewBox="0 0 24 24" width="20" height="20" class="stroke-current"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke-width="1.5"/></svg>
+        </button>
+      </header>
+      <div class="modal-body job-detail">
+        <div class="detail-grid">
+          <div>
+            <h4 class="detail-head">Beschreibung</h4>
+            <div id="job-desc" class="prose"></div>
+          </div>
+          <div>
+            <h4 class="detail-head">Anforderungen</h4>
+            <ul id="job-reqs" class="bullet"></ul>
+          </div>
+          <div>
+            <h4 class="detail-head">Vergütung & Konditionen</h4>
+            <ul id="job-pay" class="bullet"></ul>
+          </div>
+          <div>
+            <h4 class="detail-head">Arbeitszeiten</h4>
+            <ul id="job-time" class="bullet"></ul>
+          </div>
+          <div>
+            <h4 class="detail-head">Tech-Stack / Tools</h4>
+            <ul id="job-tech" class="tag-cloud"></ul>
+          </div>
+          <div>
+            <h4 class="detail-head">Quellen</h4>
+            <ul id="job-sources" class="source-mini"></ul>
+          </div>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <a id="job-link" class="btn-primary" target="_blank" rel="noopener">Zur Anzeige</a>
+        <button class="btn-outline" data-action="compare">In Vergleich</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Command Palette -->
+  <div id="cmdk-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="cmdk-title" hidden>
+    <div class="modal-backdrop" data-dismiss></div>
+    <div class="modal-card max-w-2xl" role="document">
+      <header class="modal-header">
+        <h3 id="cmdk-title" class="modal-title">Schnellsuche</h3>
+        <button class="btn-ghost" data-dismiss aria-label="Schließen">
+          <svg viewBox="0 0 24 24" width="20" height="20" class="stroke-current"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke-width="1.5"/></svg>
+        </button>
+      </header>
+      <div class="modal-body">
+        <label class="input-wrap w-full">
+          <svg viewBox="0 0 24 24" width="18" height="18" class="stroke-current">
+            <circle cx="11" cy="11" r="7" fill="none" stroke-width="1.5"></circle>
+            <path d="M21 21l-4.3-4.3" fill="none" stroke-width="1.5"></path>
+          </svg>
+          <input id="cmdk-input" type="search" placeholder="Rolle, Arbeitgeber, Ort, Remote…" autocomplete="off" />
+        </label>
+        <div id="cmdk-results" class="cmdk-results mt-3">
+          <!-- Treffer via app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===========================
+       SKELETONS / PLACEHOLDERS
+       =========================== -->
+  <div id="global-skeleton" class="skeleton-overlay hidden" aria-hidden="true">
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line w-3/4"></div>
+    <div class="skeleton-grid">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- ===========================
+       FOOTER
+       =========================== -->
+  <footer class="border-t border-divider bg-footer">
+    <div class="container mx-auto px-4 py-8 text-sm text-muted flex flex-col md:flex-row items-start md:items-center gap-4">
+      <div>© <span id="year"></span> Dr. med. Markus Lurz · Radiologie</div>
+      <div class="md:ml-auto flex flex-wrap items-center gap-3">
+        <a class="link" href="#/sources">Quellen</a>
+        <a class="link" href="#/profile">Profil</a>
+        <button class="btn-ghost btn-xs with-stroke" id="export-btn" title="Export als PDF/Markdown">
+          <svg viewBox="0 0 24 24" width="18" height="18" class="stroke-current"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" fill="none" stroke-width="1.5"/></svg>
+          Export
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       SCRIPTS
+       =========================== -->
+  <!-- Vendor loader (dynamically loads GSAP, Lottie, Tippy, Vivus, Splide) -->
+  <script src="js/vendor.js"></script>
+  <!-- App logic -->
+  <script src="js/app.js" defer></script>
+
+  <!-- Accessibility: initial focus trap removal on hash change -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Quellenanker (werden in data/careers.json strukturiert ausgeliefert und im UI angezeigt):
+    - 5. Änderungstarifvertrag (Inflationsausgleich 2.400 € + 400 €, Fälligkeit 10/2024). Dok-ID: 5ATV-2024  [PDF intern]
+    - 6. Änderungstarifvertrag (Tabellen 11/2024, 04/2025, 09/2025, 04/2026; Nacht/WS-Zuschlag; Schichtzulage; BD-Stundenentgelte). Dok-ID: 6ATV-2025  [PDF intern]
+    - TV-Ärzte/St. Georg (durchgeschrieben, Stand 2022): § 11, § 12, § 12a (RB-Faktoren; BD-Bewertung). Dok-ID: HTV-2022  [PDF intern]
+    - Gehaltsmitteilung 07/2025 (Validierung Rechenlogik; BD Stufe III 55,62 h × 0,95 × 38,03 € = 2.009,47 €). Dok-ID: Payroll-2025-07  [intern]
+  -->
+</body>
+</html>
